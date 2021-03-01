@@ -40,8 +40,8 @@
           <b>♪</b>
         </font>
       </div>
-      <h1 class="project-name">{{ general.title }}</h1>
-      <h2 class="project-tagline">{{ general.subtitle }}</h2>
+      <h1 class="project-name">{{ blogTitle }}</h1>
+      <h2 class="project-tagline">{{ blogDescribe }}</h2>
       <a
         :href="'https://github.com/' + githubUsername"
         class="btn"
@@ -214,6 +214,13 @@
   </div>
 </template>
 
+<static-query>
+query {
+  metadata {
+    siteName
+  }
+}
+</static-query>
 <script>
 // import { mapGetters } from 'vuex'
 import Sidebar from "./components/Sidebar";
@@ -254,12 +261,6 @@ export default {
         "http://sc1.111ttt.cn:8282/2018/1/03m/13/396131232171.m4a?tflag=1519095601&pin=6cd414115fdb9a950d827487b16b5f97#.mp3",
     };
   },
-  computed: {
-    general() {
-      console.log(this.$page,'$page')
-      return this.$page.general.edges[0].node
-    }
-  },
   // computed: {
   //   ...mapGetters([
   //     "githubUsername",
@@ -286,23 +287,23 @@ export default {
       console.log(this.$refs.music.currentTime);
     },
   },
-  mounted() {
-    // this.$nextTick(() => {
-    //   setInterval(this.listenMusic, 1000);
-    // });
-    // let width = window.innerWidth;
-    // for (let i = 0; i < 12; i++) {
-    //   let temp = {};
-    //   let left = this.$util.randomInt(10, width - 310);
-    //   if (left > width / 2 - 150) {
-    //     left += 300;
-    //   }
-    //   temp["left"] = left;
-    //   temp["top"] = this.$util.randomInt(20, 300);
-    //   temp["size"] = this.$util.randomInt(20, 40);
-    //   this.randomIcon.push(temp);
-    // }
-  },
+  // mounted() {
+  //   this.$nextTick(() => {
+  //     setInterval(this.listenMusic, 1000);
+  //   });
+  //   let width = window.innerWidth;
+  //   for (let i = 0; i < 12; i++) {
+  //     let temp = {};
+  //     let left = this.$util.randomInt(10, width - 310);
+  //     if (left > width / 2 - 150) {
+  //       left += 300;
+  //     }
+  //     temp["left"] = left;
+  //     temp["top"] = this.$util.randomInt(20, 300);
+  //     temp["size"] = this.$util.randomInt(20, 40);
+  //     this.randomIcon.push(temp);
+  //   }
+  // },
   created() {},
   methods: {
     selectTopbar(index) {
